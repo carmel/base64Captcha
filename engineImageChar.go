@@ -3,8 +3,6 @@ package base64Captcha
 import (
 	"bytes"
 	"fmt"
-	"github.com/golang/freetype"
-	"golang.org/x/image/font"
 	"image"
 	"image/color"
 	"image/draw"
@@ -13,6 +11,9 @@ import (
 	"log"
 	"math"
 	"math/rand"
+
+	"github.com/golang/freetype"
+	"golang.org/x/image/font"
 )
 
 var trueTypeFontFamilys = readFontsToSliceOfTrueTypeFonts()
@@ -28,32 +29,32 @@ type CaptchaImageChar struct {
 type ConfigCharacter struct {
 	// Height png height in pixel.
 	// 图像验证码的高度像素.
-	Height int
+	Height int `yaml:"height"`
 	// Width Captcha png width in pixel.
 	// 图像验证码的宽度像素
-	Width int
+	Width int `yaml:"width"`
 	//Mode : base64captcha.CaptchaModeNumber=0, base64captcha.CaptchaModeAlphabet=1, base64captcha.CaptchaModeArithmetic=2, base64captcha.CaptchaModeNumberAlphabet=3.
-	Mode int
+	Mode int `yaml:"mode"`
 	//IsUseSimpleFont is use simply font(...base64Captcha/fonts/RitaSmith.ttf).
-	IsUseSimpleFont bool
+	IsUseSimpleFont bool `yaml:"isUseSimpleFont"`
 	//ComplexOfNoiseText text noise count.
-	ComplexOfNoiseText int
+	ComplexOfNoiseText int `yaml:"complexOfNoiseText"`
 	//ComplexOfNoiseDot dot noise count.
-	ComplexOfNoiseDot int
+	ComplexOfNoiseDot int `yaml:"complexOfNoiseDot"`
 	//IsShowHollowLine is show hollow line.
-	IsShowHollowLine bool
+	IsShowHollowLine bool `yaml:"isShowHollowLine"`
 	//IsShowNoiseDot is show noise dot.
-	IsShowNoiseDot bool
+	IsShowNoiseDot bool `yaml:"isShowNoiseDot"`
 	//IsShowNoiseText is show noise text.
-	IsShowNoiseText bool
+	IsShowNoiseText bool `yaml:"isShowNoiseText"`
 	//IsShowSlimeLine is show slime line.
-	IsShowSlimeLine bool
+	IsShowSlimeLine bool `yaml:"isShowSlimeLine"`
 	//IsShowSineLine is show sine line.
-	IsShowSineLine bool
+	IsShowSineLine bool `yaml:"isShowSineLine"`
 
 	// CaptchaLen Default number of digits in captcha solution.
 	// 默认数字验证长度6.
-	CaptchaLen int
+	CaptchaLen int `yaml:"captchaLen"`
 }
 type point struct {
 	X int
